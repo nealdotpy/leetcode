@@ -37,7 +37,6 @@ def three_sum(nums):
 				l += 1
 				r -= 1
 
-
 	return ans
 
 print(three_sum([-1, 0, 1, 2, -1, -4]))
