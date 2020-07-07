@@ -34,17 +34,19 @@ from random import random
 from collections import deque
 
 class Board:
-	def __init__(self, rows, cols):
+	def __init__(self, *args, **kwargs):
 		board = []
-		for i in range(cols):
-			row = []
-			for j in range(rows):
-				row.append('X' if random()<=0.67 else 'O')
-			board.append(row)
-		self.board = board
-
-	def __init__(self, board):
-		self.board = board
+		if kwargs.get('i') and kwargs.get('j'):
+			ki, kj = kwargs.get('i'), kwargs.get('j')
+			dist = kwargs.get('dist') or 0.67
+			for i in range(ki):
+				row = []
+				for j in range(kj):
+					row.append('X' if random()<=dist else 'O')
+				board.append(row)
+			self.board = board
+		elif kwargs.get('board'):
+			self.board = kwargs['board']
 
 	def print(self):
 		for row in self.board:
@@ -52,13 +54,6 @@ class Board:
 		print()
 
 #Board(4,4).print()
-
-test = [["X","X","X","X"],
-		 ["X","O","O","X"],
-		 ["X","X","O","X"],
-		 ["X","O","X","X"]]
-
-board = Board(test)
 
 '''
 format -> [(i,j)->[(i-1,j),(i+1,j),(i,j-1),(i,j+1)],
@@ -117,5 +112,16 @@ def solve(board) -> None:
 	print(check)
 	'''
 
+test = [["X","X","X","X"],
+		 ["X","O","O","X"],
+		 ["X","X","O","X"],
+		 ["X","O","X","X"]]
+
+board = Board(board=test)
+
 solve(board)
 board.print()
+
+board2 = Board(i=42, j=20)
+solve(board2)
+board2.print()
