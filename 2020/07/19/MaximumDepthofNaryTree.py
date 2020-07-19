@@ -1,6 +1,7 @@
 '''
 559. Maximum Depth of N-ary Tree - Easy
 https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
+
 '''
 
 class Node:
