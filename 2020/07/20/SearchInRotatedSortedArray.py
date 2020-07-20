@@ -33,7 +33,7 @@ def search(nums, target) -> int:
 	left, right = 0, len(nums)
 	while left < right:
 		mid = (left + right) // 2
-		if (nums[mid] < nums[0]) and (target < nums[0]):
+		if (nums[mid] < nums[0]) == (target < nums[0]):
 			if nums[mid] < target:
 				left = mid + 1
 			elif nums[mid] > target:
